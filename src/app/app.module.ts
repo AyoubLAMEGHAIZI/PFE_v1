@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { CommerceComponent } from './commerce/commerce.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // tslint:disable-next-line:max-line-length
-import {MatButtonModule, MatNativeDateModule, MatIconModule, MatSidenavModule, MatListModule, MatToolbarModule, MatSliderModule} from '@angular/material';
+import {MatButtonModule, MatNativeDateModule, MatIconModule, MatSidenavModule, MatListModule, MatToolbarModule, MatSliderModule, MatSelectModule, MatInputModule, MatAutocompleteModule} from '@angular/material';
 
 const appRoutes: Routes = [
   {
@@ -48,8 +48,10 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MatSliderModule,
     MatIconModule,
-    MatButtonModule, MatNativeDateModule, MatIconModule, MatSidenavModule, MatListModule, MatToolbarModule
+    MatButtonModule, MatNativeDateModule, MatIconModule, MatSidenavModule, MatListModule, MatToolbarModule,
+    MatSelectModule, MatInputModule, MatAutocompleteModule
   ],
+
   providers: [
     GeoCoord
   ],

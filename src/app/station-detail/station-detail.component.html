@@ -1,14 +1,22 @@
 <div class="container custom-container">
   <div class="col-md-12">
-    <h3 class="mb-3 text-center">Recherche station</h3>
+    <br>
+    <h2 class="mb-3 text-center">Recherche station</h2>
 
     <div class="form-group">
-      <input type="text" [(ngModel)]="stationDetails.name" class="form-control" placeholder="Name">
+      <mat-form-field appearance="legacy">
+        <mat-label>Nom de station</mat-label>
+      <input matInput [(ngModel)]="stationDetails.name" class="form-control" placeholder="Ex: Auber">
+      <mat-icon matSuffix>train</mat-icon>
+    </mat-form-field>
     </div>
 
     <div class="form-group">
-      <button class="btn btn-success btn-lg btn-block" (click)="AppelStation()">Afficher Station</button>
+      <button  mat-raised-button color="primary" (click)="AppelStation()">Afficher Station</button>
     </div>
+      
+      
+    
 
    <!-- <div class="form-group">
      <a routerLink ="/commerces"> <button class="btn btn-warning btn-lg btn-block">Afficher Commerces</button></a>
