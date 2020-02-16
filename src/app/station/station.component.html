@@ -1,0 +1,11 @@
+<h2>Station List</h2>
+
+
+<ul class="stations">
+  <li *ngFor="let s of stations; let i=index;">
+    <a routerLink="/stations-details/{{station.stop_name}}">
+      <span class="badge">{{i+1}}</span> {{station.records[i].fields.stop_name}}
+    </a>
+  </li>
+</ul>
+
