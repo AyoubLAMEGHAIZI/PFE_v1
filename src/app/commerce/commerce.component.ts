@@ -22,7 +22,8 @@ const stationIcon = L.icon({
 })
 export class CommerceComponent implements OnInit, AfterViewInit {
 
-  @Input() stationD = { name: ''};
+  @Input() stationD = { name: '',distance: ''};
+  
 
   station: any;
   commerces: any ;
@@ -31,6 +32,19 @@ export class CommerceComponent implements OnInit, AfterViewInit {
   carte: any;
 
   map: any;
+   //---
+   autoTicks = false;
+   max = 200000;
+   min = 200;
+   showTicks = true;
+   step = 200;
+   thumbLabel = true;
+   value = 0;
+   tickInterval = 1;
+   getSliderTickInterval(): number | 'auto' {
+    return this.showTicks ? (this.autoTicks ? 'auto' : this.tickInterval) : 0;
+  }
+   //--- 
 
  lgMarkers = new L.LayerGroup();
 
@@ -72,20 +86,18 @@ export class CommerceComponent implements OnInit, AfterViewInit {
         this.station = data;
         this.latitude = this.station.records[0].fields.stop_coordinates[0];
         this.longuitude = this.station.records[0].fields.stop_coordinates[1];
-        const stationMarker = L.marker([this.latitude, this.longuitude], {icon: stationIcon}).addTo(this.lgMarkers)
-        .bindPopup('Station: ' + this.station.records[0].fields.stop_name)
-        .openPopup();
+        const stationMarker = L.marker([this.latitude, this.longuitude]).addTo(this.lgMarkers)
+        .bindPopup('Station: ' + this.station.records[0].fields.stop_name).openPopup();
         this.map.setView([this.latitude, this.longuitude], 15);
         return this.station;
       }),
-      mergeMap( station => this.rest.getCommercesFromStation(this.latitude, this.longuitude))
+      mergeMap( station => this.rest.getCommerce(this.latitude, this.longuitude,this.stationD.distance))
     ).subscribe( comm => {
       this.commerces = comm;
       this.commerces.records.map(r => r.fields).
       forEach(element => {
         L.marker([element.coord_geo[0], element.coord_geo[1]]).addTo(this.lgMarkers)
-        .bindPopup(element.tco_libelle + ', ' + element.dea_numero_rue_livraison_dea_rue_livraison)
-        .openPopup();
+        .bindPopup(element.tco_libelle + ', ' + element.dea_numero_rue_livraison_dea_rue_livraison);
       });
     });
 

@@ -1,4 +1,6 @@
-<div class="form-group m 5 p 5 text-center">
+<div class="form-group m 1 p 1 text-center">
+  <br>
+  <h2 class="mb-3 text-center">Around me ?</h2>
   <br>
   <button mat-raised-button color="warn" (click)="getLocation()">Afficher ma position</button>
   <br><br>
@@ -6,13 +8,25 @@
   <ul>
     <div *ngIf="localisation_autorisation">
 
-        <h4>Longitude : {{ longitude }}</h4>
-        <h4>Latitude : {{ latitude }}</h4>
+      <h4>Longitude : {{ longitude }}</h4>
+      <h4>Latitude : {{ latitude }}</h4>
 
     </div>
   </ul>
 
+  <mat-card class="example-result-card">
+    <mat-card-content>
+      <h2>Distance</h2>
+      <br>
+      <mat-slider class="example-margin"[max]="max" [min]="min" [step]="step"
+        [thumbLabel]="thumbLabel" [tickInterval]="getSliderTickInterval()" [(ngModel)]="value">
+      </mat-slider>
+    </mat-card-content>
+  </mat-card>
+
+
   <br>
+
   <button mat-raised-button color="warn" (click)="getCommercePos()">Afficher Les commerces a proximité</button>
   <br><br>
 </div>
@@ -28,10 +42,10 @@
   <ul class="commerces">
     <li *ngFor="let r of commerces.records; let i=index;">
       <!--<a routerLink="/commerces/{{records[i].fields.coord_geo[0]}}/{{records[i].fields.coord_geo[1]}}/{{records[i].fields.dist}}">-->
-        <div><span class="badge">Nom: </span> {{commerces.records[i].fields.tco_libelle}}</div> 
-      
-  
+      <div><span class="badge">Nom: </span> {{commerces.records[i].fields.tco_libelle}}</div>
+
+
     </li>
-  
+
   </ul>
-  </div>
+</div>

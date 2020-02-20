@@ -7,13 +7,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { StationComponent } from './station/station.component';
 import { StationDetailComponent } from './station-detail/station-detail.component';
 import { FormsModule } from '@angular/forms';
 import { CommerceComponent } from './commerce/commerce.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // tslint:disable-next-line:max-line-length
-import { MatButtonModule, MatNativeDateModule, MatIconModule, MatSidenavModule, MatListModule, MatToolbarModule, MatSliderModule, MatSelectModule, MatInputModule, MatAutocompleteModule } from '@angular/material';
+import { MatButtonModule, MatNativeDateModule, MatIconModule, MatSidenavModule, MatListModule, MatToolbarModule, MatSliderModule, MatSelectModule, MatInputModule, MatAutocompleteModule, MatCardModule } from '@angular/material';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { MypositionComponent } from './myposition/myposition.component';
 import { SiteComponent } from './site/site.component';
@@ -23,11 +22,6 @@ import { FooterComponent } from './footer/footer.component';
 import { ButtonsModule, IconsModule } from 'angular-bootstrap-md';
 import { HomepageComponent } from './homepage/homepage.component'
 const appRoutes: Routes = [
-  {
-    path: 'stations',
-    component: StationComponent,
-    data: { title: 'Station List' }
-  },
   {
     path: 'station-details',
     component: StationDetailComponent,
@@ -70,7 +64,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    StationComponent,
     StationDetailComponent,
     CommerceComponent,
     MypositionComponent,
@@ -88,7 +81,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MatSliderModule,
     MatIconModule,
-    MatButtonModule, MatNativeDateModule, MatIconModule, MatSidenavModule, MatListModule, MatToolbarModule,
+    MatButtonModule, MatNativeDateModule, MatIconModule, MatSidenavModule, MatListModule, MatToolbarModule,MatCardModule,
     MatSelectModule, MatInputModule, MatAutocompleteModule,
     MDBBootstrapModule.forRoot()
   ],

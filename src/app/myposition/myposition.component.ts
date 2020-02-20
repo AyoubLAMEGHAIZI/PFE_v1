@@ -22,14 +22,31 @@ const stationIcon = L.icon({
   styleUrls: ['./myposition.component.css']
 })
 export class MypositionComponent implements OnInit {
+
+  @Input() userValue = { distance: ''};
+
   x: number;
-  longitude: number = 2.213749;
-  latitude: number = 46.227638;
+  longitude: number;
+  latitude: number;
+  distance:any;
   localisation_autorisation: boolean = false;
   commerces: any;
   carte: any;
   map: any;
   lgMarkers = new L.LayerGroup();
+  //---
+  autoTicks = false;
+  max = 20000;
+  min = 200;
+  showTicks = true;
+  step = 200;
+  thumbLabel = true;
+  value = 0;
+  tickInterval = 1;
+  getSliderTickInterval(): number | 'auto' {
+    return this.showTicks ? (this.autoTicks ? 'auto' : this.tickInterval) : 0;
+  }
+   //---
 
   constructor(public rest: RestService, private route: ActivatedRoute, private router: Router, private param: GeoCoord) { }
 
@@ -60,15 +77,15 @@ export class MypositionComponent implements OnInit {
   //-----------------------------------------------------------------------------
   //-----------------------------------------------------------------------------
   getLocation() {
-    console.log(' Avant localisation: Latitude : ' + this.latitude + ' Longitude: ' + this.longitude);
+    //console.log(' Avant localisation: Latitude : ' + this.latitude + ' Longitude: ' + this.longitude);
     if (navigator.geolocation) {
       /*--- ANCIEN METHODE NE FONCTIONNE PAS 
       navigator.geolocation.getCurrentPosition(this.showLocation2);
       */
 
       navigator.geolocation.getCurrentPosition(pos => {
-        this.longitude = +pos.coords.longitude;
-        this.latitude = +pos.coords.latitude;
+        this.longitude = pos.coords.longitude;
+        this.latitude = pos.coords.latitude;
         //alert('Latitude : ' + this.latitude + ' Longitude: ' + this.longitude);
         this.showLocation();
       });
@@ -83,7 +100,6 @@ export class MypositionComponent implements OnInit {
       .openPopup();
     this.map.setView([this.latitude, this.longitude], 15);
 
-
   }
   //-----------------------------------------------------------------------------
   //-----------------------------------------------------------------------------
@@ -97,7 +113,7 @@ export class MypositionComponent implements OnInit {
     this.lgMarkers.clearLayers();
 
 
-    this.rest.getCommercesFromStation(this.latitude, this.longitude)
+    this.rest.getCommerce(this.latitude, this.longitude,this.userValue.distance)
       .subscribe(comm => {
         this.commerces = comm;
         this.commerces.records.map(r => r.fields).
