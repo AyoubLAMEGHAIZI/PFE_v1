@@ -13,8 +13,15 @@ import { FormsModule } from '@angular/forms';
 import { CommerceComponent } from './commerce/commerce.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // tslint:disable-next-line:max-line-length
-import {MatButtonModule, MatNativeDateModule, MatIconModule, MatSidenavModule, MatListModule, MatToolbarModule, MatSliderModule, MatSelectModule, MatInputModule, MatAutocompleteModule} from '@angular/material';
-
+import { MatButtonModule, MatNativeDateModule, MatIconModule, MatSidenavModule, MatListModule, MatToolbarModule, MatSliderModule, MatSelectModule, MatInputModule, MatAutocompleteModule } from '@angular/material';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MypositionComponent } from './myposition/myposition.component';
+import { SiteComponent } from './site/site.component';
+import { ContactComponent } from './contact/contact.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { FooterComponent } from './footer/footer.component';
+import { ButtonsModule, IconsModule } from 'angular-bootstrap-md';
+import { HomepageComponent } from './homepage/homepage.component'
 const appRoutes: Routes = [
   {
     path: 'stations',
@@ -30,7 +37,34 @@ const appRoutes: Routes = [
     path: 'commerces',
     component: CommerceComponent,
     data: { title: 'Commerce List' }
+  },
+  {
+    path: 'myposition',
+    component: MypositionComponent,
+    data: { title: 'My position' }
+  },
+  {
+    path: 'autres-sites',
+    component: SiteComponent,
+    data: { title: 'Autres sites' }
+  },
+  {
+    path: 'contacts',
+    component: ContactComponent,
+    data: { title: 'Contact' }
+  },
+  {
+    path: 'aboutus',
+    component: AboutusComponent,
+    data: { title: 'About us' }
+  },
+  {
+    path: 'home',
+    component: HomepageComponent,
+    data: { title: 'Home page' }
   }
+
+
 ];
 
 @NgModule({
@@ -38,7 +72,13 @@ const appRoutes: Routes = [
     AppComponent,
     StationComponent,
     StationDetailComponent,
-    CommerceComponent
+    CommerceComponent,
+    MypositionComponent,
+    SiteComponent,
+    ContactComponent,
+    AboutusComponent,
+    FooterComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +89,8 @@ const appRoutes: Routes = [
     MatSliderModule,
     MatIconModule,
     MatButtonModule, MatNativeDateModule, MatIconModule, MatSidenavModule, MatListModule, MatToolbarModule,
-    MatSelectModule, MatInputModule, MatAutocompleteModule
+    MatSelectModule, MatInputModule, MatAutocompleteModule,
+    MDBBootstrapModule.forRoot()
   ],
 
   providers: [

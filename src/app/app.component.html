@@ -20,15 +20,19 @@
                 <span class="title" mat-line>Commerces</span>
                 <span mat-line class="secondary">Trouver commerces à proximité</span>
             </a>
-            <a mat-list-item class="sidenav-link" [routerLink]="['']" (click)="sidenav.toggle()">
+            <a mat-list-item class="sidenav-link" [routerLink]="['myposition']" (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>location_on</mat-icon>
+                <span class="title" mat-line>Ma position</span>
+            </a>
+            <a mat-list-item class="sidenav-link" [routerLink]="['autres-sites']" (click)="sidenav.toggle()">
                 <mat-icon mat-list-icon>language</mat-icon>
                 <span class="title" mat-line>Sites utiles</span>
             </a>
-            <a mat-list-item class="sidenav-link" [routerLink]="['']" (click)="sidenav.toggle()">
+            <a mat-list-item class="sidenav-link" [routerLink]="['contacts']" (click)="sidenav.toggle()">
                 <mat-icon mat-list-icon>contacts</mat-icon>
                 <span class="title" mat-line>Contacts</span>
             </a>
-            <a mat-list-item class="sidenav-link" [routerLink]="['']" (click)="sidenav.toggle()">
+            <a mat-list-item class="sidenav-link" [routerLink]="['aboutus']" (click)="sidenav.toggle()">
                 <mat-icon mat-list-icon>sentiment_very_satisfied</mat-icon>
                 <span class="title" mat-line>About us</span>
             </a>
@@ -44,11 +48,12 @@
             <mat-icon aria-label="Menu" class="material-icons">menu</mat-icon>
         </button>
         <h1 class="component-title">
-            <a class="title-link"> Find my way<mat-icon mat-list-icon>location_on</mat-icon></a>
+            <a mat-button class="title-link text-uppercase font-weight-bold" [routerLink]="['home']"> Find my way<mat-icon mat-list-icon>location_on</mat-icon></a>
         </h1>
         <span class="toolbar-filler"></span>
         <!--<button id="button-login" mat-button [routerLink]="['/signupin']" *ngIf="!(user | async)">Log In</button>
       <button id="button-logout" mat-button>Log Out</button>-->
     </mat-toolbar>
     <router-outlet></router-outlet>
+    <app-footer></app-footer>
 </mat-sidenav-container>

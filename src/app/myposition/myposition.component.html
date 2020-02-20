@@ -1,0 +1,37 @@
+<div class="form-group m 5 p 5 text-center">
+  <br>
+  <button mat-raised-button color="warn" (click)="getLocation()">Afficher ma position</button>
+  <br><br>
+
+  <ul>
+    <div *ngIf="localisation_autorisation">
+
+        <h4>Longitude : {{ longitude }}</h4>
+        <h4>Latitude : {{ latitude }}</h4>
+
+    </div>
+  </ul>
+
+  <br>
+  <button mat-raised-button color="warn" (click)="getCommercePos()">Afficher Les commerces a proximité</button>
+  <br><br>
+</div>
+
+
+<div class="map-container">
+  <div class="map-frame">
+    <div id="map"></div>
+  </div>
+</div>
+
+<div *ngIf="commerces" class="commerces">
+  <ul class="commerces">
+    <li *ngFor="let r of commerces.records; let i=index;">
+      <!--<a routerLink="/commerces/{{records[i].fields.coord_geo[0]}}/{{records[i].fields.coord_geo[1]}}/{{records[i].fields.dist}}">-->
+        <div><span class="badge">Nom: </span> {{commerces.records[i].fields.tco_libelle}}</div> 
+      
+  
+    </li>
+  
+  </ul>
+  </div>
