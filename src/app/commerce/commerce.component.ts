@@ -34,7 +34,7 @@ export class CommerceComponent implements OnInit, AfterViewInit {
   map: any;
    // ---
    autoTicks = false;
-   max = 30000;
+   max = 2000;
    min = 200;
    showTicks = true;
    step = 10;
