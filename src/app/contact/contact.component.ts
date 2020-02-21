@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ContactComponent implements OnInit {
 
-  FeedBackmodel : FeedBack={
+  FeedBack: FeedBack={
     name :'',
     email:'',
     feedback:''
@@ -21,8 +21,8 @@ export class ContactComponent implements OnInit {
   }
 
    sendFeedback() : void{
-    let url="http//localhost:8082/feedback";
-    this.http.post(url,this.FeedBackmodel).subscribe(
+    let url="http://localhost:8081/feedback";
+    this.http.post(url,this.FeedBack).subscribe(
       res=>{location.reload();},
 
       err=>{alert('An error has occured while sending feedback ');}
