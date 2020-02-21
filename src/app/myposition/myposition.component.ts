@@ -23,12 +23,12 @@ const stationIcon = L.icon({
 })
 export class MypositionComponent implements OnInit {
 
-  @Input() userValue = { distance: ''};
+  @Input() userValue = { distance: '' };
 
   x: number;
   longitude: number;
   latitude: number;
-  distance:any;
+  distance: any;
   localisation_autorisation: boolean = false;
   commerces: any;
   carte: any;
@@ -46,7 +46,7 @@ export class MypositionComponent implements OnInit {
   getSliderTickInterval(): number | 'auto' {
     return this.showTicks ? (this.autoTicks ? 'auto' : this.tickInterval) : 0;
   }
-   //---
+  //---
 
   constructor(public rest: RestService, private route: ActivatedRoute, private router: Router, private param: GeoCoord) { }
 
@@ -76,17 +76,20 @@ export class MypositionComponent implements OnInit {
   }
   //-----------------------------------------------------------------------------
   //-----------------------------------------------------------------------------
-  getLocation() {
+  async getLocation() {
     //console.log(' Avant localisation: Latitude : ' + this.latitude + ' Longitude: ' + this.longitude);
     if (navigator.geolocation) {
       /*--- ANCIEN METHODE NE FONCTIONNE PAS 
       navigator.geolocation.getCurrentPosition(this.showLocation2);
       */
 
-      navigator.geolocation.getCurrentPosition(pos => {
+      await navigator.geolocation.getCurrentPosition(pos => {
         this.longitude = pos.coords.longitude;
         this.latitude = pos.coords.latitude;
         //alert('Latitude : ' + this.latitude + ' Longitude: ' + this.longitude);
+        //-----------afficher position utilisateur-----------------------------------
+        this.userPosition();
+        //-------------------------------------------------------------------
         this.showLocation();
       });
 
@@ -94,11 +97,6 @@ export class MypositionComponent implements OnInit {
     } else {
       this.localisation_autorisation = false;
     }
-    this.map.setView([this.latitude, this.longitude], 15);
-    const myPositionMarker = L.marker([this.latitude, this.longitude]).addTo(this.lgMarkers)
-      .bindPopup('Ma position')
-      .openPopup();
-    this.map.setView([this.latitude, this.longitude], 15);
 
   }
   //-----------------------------------------------------------------------------
@@ -111,9 +109,10 @@ export class MypositionComponent implements OnInit {
   getCommercePos() {
 
     this.lgMarkers.clearLayers();
-
-
-    this.rest.getCommerce(this.latitude, this.longitude,this.userValue.distance)
+    //-----------afficher position utilisateur-----------------------------------
+    this.userPosition();
+    //-----------récuperer les commerces puis les afficher-----------------------
+    this.rest.getCommerce(this.latitude, this.longitude, this.userValue.distance)
       .subscribe(comm => {
         this.commerces = comm;
         this.commerces.records.map(r => r.fields).
@@ -126,7 +125,13 @@ export class MypositionComponent implements OnInit {
 
   }
 
-
+  userPosition() {
+    this.map.setView([this.latitude, this.longitude], 15);
+    const myPositionMarker = L.marker([this.latitude, this.longitude]).addTo(this.lgMarkers)
+      .bindPopup('Ma position')
+      .openPopup();
+    this.map.setView([this.latitude, this.longitude], 15);
+  }
 
 
   /* --- ANCIEN METHODE NE FONCTIONNE PAS 
