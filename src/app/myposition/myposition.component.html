@@ -19,9 +19,9 @@
       <h2>Distance</h2>
       <br>
       <mat-slider class="example-margin"[max]="max" [min]="min" [step]="step"
-        [thumbLabel]="thumbLabel" [tickInterval]="getSliderTickInterval()" [(ngModel)]="value">
+        [thumbLabel]="thumbLabel" [tickInterval]="getSliderTickInterval()" [(ngModel)]="userValue.distance">
       </mat-slider>
-      <h2>Les commerces à {{value}} m</h2>
+      <h2>Les commerces à {{userValue.distance}} m</h2>
     </mat-card-content>
   </mat-card>
 

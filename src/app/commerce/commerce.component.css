@@ -19,4 +19,24 @@
     width: 100%;
     height: 50px;
   }
+
+  .mat-slider-horizontal {
+    width: 400px;
+  }
+  
+  .mat-slider-vertical {
+    height: 300px;
+  }
+  
+  .mat-card + .mat-card {
+    margin-top: 8px;
+  }
+
+  .example-result-card h2 {
+    margin: 0 8px;
+  }
+
+  .example-margin {
+    margin: 8px;
+  }
   

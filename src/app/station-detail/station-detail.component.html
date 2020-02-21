@@ -1,5 +1,5 @@
 <div class="im container custom-container">
-  <div class="col-md-12">
+  <div class="form-group m 1 p 1 text-center">
     <br>
     <h2 class="mb-3 text-center">Recherche station</h2>
 
@@ -27,10 +27,27 @@
 
 
 
-<div *ngIf="station" class="stations">
-    <h2>Station {{station.records[0].fields.stop_name | uppercase}} details</h2>
+<div *ngIf="station" class="stations" class="materialCard" >
+    <!--<h2>Station {{station.records[0].fields.stop_name | uppercase}} details</h2>
     <div><span>Adresse: </span>{{station.records[0].fields.stop_desc}}</div>
     <div><span>Coordinates: </span>{{station.records[0].fields.stop_coordinates}}</div>
-    <div><span>Id: </span>{{station.records[0].fields.stop_id}}</div>
+    <div><span>Id: </span>{{station.records[0].fields.stop_id}}</div>-->
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-icon matSuffix>train</mat-icon>
+        <mat-card-title><h2>Station {{station.records[0].fields.stop_name | uppercase}}</h2></mat-card-title>
+        <mat-card-subtitle><span>Coordinates: </span>{{station.records[0].fields.stop_coordinates}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="../../assets/img/home.jpg" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>
+          <span>Adresse: </span>{{station.records[0].fields.stop_desc}}
+        </p>
+      </mat-card-content>
+      <!--<mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+      </mat-card-actions>-->
+    </mat-card>
     
   </div>
