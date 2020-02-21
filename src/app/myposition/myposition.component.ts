@@ -34,32 +34,33 @@ export class MypositionComponent implements OnInit {
   carte: any;
   map: any;
   lgMarkers = new L.LayerGroup();
-  //---
+  // ---
   autoTicks = false;
-  max = 80000;
+  max = 30000;
   min = 200;
   showTicks = true;
-  step = 200;
+  step = 10;
   thumbLabel = true;
-  value = 0;
-  tickInterval = 1;
+  value = 200;
+  tickInterval = 1000;
   getSliderTickInterval(): number | 'auto' {
     return this.showTicks ? (this.autoTicks ? 'auto' : this.tickInterval) : 0;
   }
-  //---
+  // ---
 
   constructor(public rest: RestService, private route: ActivatedRoute, private router: Router, private param: GeoCoord) { }
 
 
   ngOnInit() {
   }
-  //-----------------------------------------------------------------------------
-  //-----------------------------------------------------------------------------
+  // -----------------------------------------------------------------------------
+  // -----------------------------------------------------------------------------
+  // tslint:disable-next-line:use-lifecycle-interface
   ngAfterViewInit(): void {
     this.initMap(48.8534, 2.3488);
   }
-  //-----------------------------------------------------------------------------
-  //-----------------------------------------------------------------------------
+  // -----------------------------------------------------------------------------
+  // -----------------------------------------------------------------------------
   private initMap(lat: number, long: number): void {
     this.map = L.map('map', {
       center: [lat, long],
@@ -74,22 +75,22 @@ export class MypositionComponent implements OnInit {
 
     this.map.addLayer(this.lgMarkers);
   }
-  //-----------------------------------------------------------------------------
-  //-----------------------------------------------------------------------------
+  // -----------------------------------------------------------------------------
+  // -----------------------------------------------------------------------------
   async getLocation() {
-    //console.log(' Avant localisation: Latitude : ' + this.latitude + ' Longitude: ' + this.longitude);
+    // console.log(' Avant localisation: Latitude : ' + this.latitude + ' Longitude: ' + this.longitude);
     if (navigator.geolocation) {
-      /*--- ANCIEN METHODE NE FONCTIONNE PAS 
+      /*--- ANCIEN METHODE NE FONCTIONNE PAS
       navigator.geolocation.getCurrentPosition(this.showLocation2);
       */
 
       await navigator.geolocation.getCurrentPosition(pos => {
         this.longitude = pos.coords.longitude;
         this.latitude = pos.coords.latitude;
-        //alert('Latitude : ' + this.latitude + ' Longitude: ' + this.longitude);
-        //-----------afficher position utilisateur-----------------------------------
+        // alert('Latitude : ' + this.latitude + ' Longitude: ' + this.longitude);
+        // -----------afficher position utilisateur-----------------------------------
         this.userPosition();
-        //-------------------------------------------------------------------
+        // -------------------------------------------------------------------
         this.showLocation();
       });
 
@@ -99,27 +100,26 @@ export class MypositionComponent implements OnInit {
     }
 
   }
-  //-----------------------------------------------------------------------------
-  //-----------------------------------------------------------------------------
+  // -----------------------------------------------------------------------------
+  // -----------------------------------------------------------------------------
   showLocation() {
     console.log('Latitude : ' + this.latitude + ' Longitude: ' + this.longitude);
   }
-  //-----------------------------------------------------------------------------
-  //-----------------------------------------------------------------------------
+  // -----------------------------------------------------------------------------
+  // -----------------------------------------------------------------------------
   getCommercePos() {
 
     this.lgMarkers.clearLayers();
-    //-----------afficher position utilisateur-----------------------------------
+    // -----------afficher position utilisateur-----------------------------------
     this.userPosition();
-    //-----------récuperer les commerces puis les afficher-----------------------
+    // -----------récuperer les commerces puis les afficher-----------------------
     this.rest.getCommerce(this.latitude, this.longitude, this.userValue.distance)
       .subscribe(comm => {
         this.commerces = comm;
         this.commerces.records.map(r => r.fields).
           forEach(element => {
             L.marker([element.coord_geo[0], element.coord_geo[1]]).addTo(this.lgMarkers)
-              .bindPopup(element.tco_libelle + ', ' + element.dea_numero_rue_livraison_dea_rue_livraison)
-              .openPopup();
+              .bindPopup(element.tco_libelle + ', ' + element.dea_numero_rue_livraison_dea_rue_livraison);
           });
       });
 
@@ -134,7 +134,7 @@ export class MypositionComponent implements OnInit {
   }
 
 
-  /* --- ANCIEN METHODE NE FONCTIONNE PAS 
+  /* --- ANCIEN METHODE NE FONCTIONNE PAS
     showLocation2(pos) {
       this.longitude = +pos.coords.longitude;
       this.latitude = +pos.coords.latitude;

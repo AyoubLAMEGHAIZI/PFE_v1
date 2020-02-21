@@ -32,19 +32,19 @@ export class CommerceComponent implements OnInit, AfterViewInit {
   carte: any;
 
   map: any;
-   //---
+   // ---
    autoTicks = false;
-   max = 200000;
+   max = 30000;
    min = 200;
    showTicks = true;
-   step = 200;
+   step = 10;
    thumbLabel = true;
-   value = 0;
-   tickInterval = 1;
+   value = 200;
+   tickInterval = 1000;
    getSliderTickInterval(): number | 'auto' {
     return this.showTicks ? (this.autoTicks ? 'auto' : this.tickInterval) : 0;
   }
-   //--- 
+   // ---
 
  lgMarkers = new L.LayerGroup();
 

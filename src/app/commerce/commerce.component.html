@@ -1,5 +1,5 @@
 <div class="container custom-container">
-  <div class="col-md-12">
+  <div class="form-group m 1 p 1 text-center">
     <br>
     <h2 class="mb-3 text-center">Recherche commerces</h2>
 
@@ -22,6 +22,7 @@
         <mat-slider class="example-margin"[max]="max" [min]="min" [step]="step"
           [thumbLabel]="thumbLabel" [tickInterval]="getSliderTickInterval()" [(ngModel)]="stationD.distance">
         </mat-slider>
+        <h2>Les commerces à {{stationD.distance}} m</h2>
       </mat-card-content>
     </mat-card>
 
