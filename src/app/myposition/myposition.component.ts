@@ -36,7 +36,7 @@ export class MypositionComponent implements OnInit {
   lgMarkers = new L.LayerGroup();
   //---
   autoTicks = false;
-  max = 20000;
+  max = 80000;
   min = 200;
   showTicks = true;
   step = 200;
