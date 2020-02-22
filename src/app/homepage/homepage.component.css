@@ -20,20 +20,28 @@ body {
 	padding: 0 !important;
   }
   .wrapper {
-	height: 1080px;
+	height: 510px;
 	width: 1920px;
 	margin: auto;
 	background: #280744;
 	overflow: hidden !important;
   }
   .background {
-	height: 1080px;
-	width: 1920px;
-	background: url(https://docs.google.com/uc?export=download&id=0B2PO2Lr7Bv2QSXhkaG1VaEhSTjA
-  );
-	background-repeat: repeat-x;
-	background-position: top center;
-	background-size: contain;
+	/*height: 1080px;
+	width: 1920px;*/
+	/*background: url(https://docs.google.com/uc?export=download&id=0B2PO2Lr7Bv2QSXhkaG1VaEhSTjA);*/
+	background-image: url("../../assets/img/home.jpg");
+	/*background-repeat: repeat-x;*/
+	/*background-position: top center;*/
+	background-size: 100%;
+	background-attachment:fixed;
+	-webkit-transition: all 0.5s ease;                  
+	-moz-transition: all 0.5s ease;                 
+	-o-transition: all 0.5s ease;   
+	-ms-transition: all 0.5s ease;          
+	transition: all 0.5s ease;
+	max-width: 100%;
+	height: 100%;
   }
   
   .rocks_1 {
