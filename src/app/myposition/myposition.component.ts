@@ -4,7 +4,6 @@ import { RestService } from './../rest.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { HttpClientModule } from '@angular/common/http';
-import { GeoCoord } from '../variablesGlobales';
 import * as L from 'leaflet';
 
 const stationIcon = L.icon({
@@ -48,7 +47,7 @@ export class MypositionComponent implements OnInit {
   }
   // ---
 
-  constructor(public rest: RestService, private route: ActivatedRoute, private router: Router, private param: GeoCoord) { }
+  constructor(public rest: RestService, private route: ActivatedRoute, private router: Router) { }
 
 
   ngOnInit() {

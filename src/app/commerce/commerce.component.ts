@@ -2,7 +2,6 @@ import { map, mergeMap } from 'rxjs/operators';
 import { RestService } from './../rest.service';
 import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GeoCoord } from '../variablesGlobales';
 import * as L from 'leaflet';
 
 const stationIcon = L.icon({
@@ -22,8 +21,9 @@ const stationIcon = L.icon({
 })
 export class CommerceComponent implements OnInit, AfterViewInit {
 
-  @Input() stationD = { name: '',distance: ''};
-  
+  constructor(public rest: RestService, private route: ActivatedRoute, private router: Router) { }
+
+  @Input() stationD = { name: '', distance: ''};
 
   station: any;
   commerces: any ;
@@ -41,14 +41,12 @@ export class CommerceComponent implements OnInit, AfterViewInit {
    thumbLabel = true;
    value = 200;
    tickInterval = 1000;
-   getSliderTickInterval(): number | 'auto' {
-    return this.showTicks ? (this.autoTicks ? 'auto' : this.tickInterval) : 0;
-  }
    // ---
 
  lgMarkers = new L.LayerGroup();
-
-  constructor(public rest: RestService, private route: ActivatedRoute, private router: Router, private param: GeoCoord) { }
+   getSliderTickInterval(): number | 'auto' {
+    return this.showTicks ? (this.autoTicks ? 'auto' : this.tickInterval) : 0;
+  }
 
 
 
@@ -91,7 +89,7 @@ export class CommerceComponent implements OnInit, AfterViewInit {
         this.map.setView([this.latitude, this.longuitude], 15);
         return this.station;
       }),
-      mergeMap( station => this.rest.getCommerce(this.latitude, this.longuitude,this.stationD.distance))
+      mergeMap( station => this.rest.getCommerce(this.latitude, this.longuitude, this.stationD.distance))
     ).subscribe( comm => {
       this.commerces = comm;
       this.commerces.records.map(r => r.fields).

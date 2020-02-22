@@ -1,4 +1,3 @@
-import { GeoCoord } from './variablesGlobales';
 import { Routes, RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -87,7 +86,6 @@ const appRoutes: Routes = [
   ],
 
   providers: [
-    GeoCoord
   ],
   bootstrap: [AppComponent],
 })

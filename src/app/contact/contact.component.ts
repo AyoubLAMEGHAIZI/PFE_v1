@@ -8,10 +8,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ContactComponent implements OnInit {
 
-  FeedBack: FeedBack={
-    name :'',
-    email:'',
-    feedback:''
+  FeedBack: FeedBack = {
+    name : '',
+    email: '',
+    feedback: ''
   };
 
   constructor( private http: HttpClient) { }
@@ -20,21 +20,21 @@ export class ContactComponent implements OnInit {
 
   }
 
-   sendFeedback() : void{
-    let url="http://localhost:8081/feedback";
-    this.http.post(url,this.FeedBack).subscribe(
-      res=>{location.reload();},
+   sendFeedback(): void {
+    const url = 'http://localhost:8081/feedback';
+    this.http.post(url, this.FeedBack).subscribe(
+      res => {location.reload(); },
 
-      err=>{alert('An error has occured while sending feedback ');}
-      
+      err => {alert('An error has occured while sending feedback '); }
+
     );
   }
 
 }
 
-export interface FeedBack{
+export interface FeedBack {
 
-  name :string;
-  email:string;
-  feedback:string
+  name: string;
+  email: string;
+  feedback: string;
 }
