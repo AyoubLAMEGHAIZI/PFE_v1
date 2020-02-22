@@ -20,7 +20,7 @@ import { ContactComponent } from './contact/contact.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { FooterComponent } from './footer/footer.component';
 import { ButtonsModule, IconsModule } from 'angular-bootstrap-md';
-import { HomepageComponent } from './homepage/homepage.component'
+import { HomepageComponent } from './homepage/homepage.component';
 const appRoutes: Routes = [
   {
     path: 'station-details',
@@ -53,7 +53,7 @@ const appRoutes: Routes = [
     data: { title: 'About us' }
   },
   {
-    path: '',
+    path: 'home',
     component: HomepageComponent,
     data: { title: 'Home page' }
   }
@@ -81,7 +81,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MatSliderModule,
     MatIconModule,
-    MatButtonModule, MatNativeDateModule, MatIconModule, MatSidenavModule, MatListModule, MatToolbarModule,MatCardModule,
+    MatButtonModule, MatNativeDateModule, MatIconModule, MatSidenavModule, MatListModule, MatToolbarModule, MatCardModule,
     MatSelectModule, MatInputModule, MatAutocompleteModule,
     MDBBootstrapModule.forRoot()
   ],
