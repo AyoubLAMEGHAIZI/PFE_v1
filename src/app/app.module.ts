@@ -20,6 +20,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { FooterComponent } from './footer/footer.component';
 import { ButtonsModule, IconsModule } from 'angular-bootstrap-md';
 import { HomepageComponent } from './homepage/homepage.component';
+
 const appRoutes: Routes = [
   {
     path: 'station-details',
@@ -52,7 +53,7 @@ const appRoutes: Routes = [
     data: { title: 'About us' }
   },
   {
-    path: 'home',
+    path: '',
     component: HomepageComponent,
     data: { title: 'Home page' }
   }

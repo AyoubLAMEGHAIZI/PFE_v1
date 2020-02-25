@@ -21,7 +21,7 @@ body {
   }
   .wrapper {
 	height: 510px;
-	width: 1920px;
+	width: 100vw;
 	margin: auto;
 	background: #280744;
 	overflow: hidden !important;
@@ -29,10 +29,10 @@ body {
   .background {
 	/*height: 1080px;
 	width: 1920px;*/
-	/*background: url(https://docs.google.com/uc?export=download&id=0B2PO2Lr7Bv2QSXhkaG1VaEhSTjA);*/
-	background-image: url("../../assets/img/home.jpg");
-	/*background-repeat: repeat-x;*/
-	/*background-position: top center;*/
+	background: url(https://docs.google.com/uc?export=download&id=0B2PO2Lr7Bv2QSXhkaG1VaEhSTjA);
+	/*background-image: url("../../assets/img/home.jpg");*/
+	background-repeat: repeat-x;
+	background-position: top center;
 	background-size: 100%;
 	background-attachment:fixed;
 	-webkit-transition: all 0.5s ease;                  
@@ -56,6 +56,7 @@ body {
 	animation: translateX 100s infinite linear both;
   }
   .rocks_2 {
+	  
 	position: absolute;
 	bottom: -60px;
 	height: 315px;
@@ -67,6 +68,7 @@ body {
 	animation: translateX 30s infinite linear both;
   }
   .rails {
+	  
 	position: absolute;
 	bottom: -110px;
 	height: 315px;
@@ -78,6 +80,7 @@ body {
 	animation: translateX 5s infinite linear both;
   }
   .train {
+	  
 	position: absolute;
 	bottom: -105px;
 	height: 315px;
@@ -89,6 +92,7 @@ body {
 	background-size: contain;
   }
   .ground {
+	  
 	position: absolute;
 	width: 1920px;
 	height: 98px;
@@ -107,6 +111,7 @@ body {
 	animation: translateX 4s infinite linear both;
   }
   .moon {
+	  
 	position: absolute;
 	top: 20%;
 	height: 315px;

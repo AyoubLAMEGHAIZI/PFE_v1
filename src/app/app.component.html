@@ -2,7 +2,7 @@
 
     <mat-sidenav #sidenav mode="push" class="app-sidenav">
         <mat-toolbar color="primary">
-            <!--future svg to go here-->
+            <!--future svg to go here-->    
             <span class="toolbar-filler"></span>
             <button mat-icon-button (click)="sidenav.toggle()" class="mat-icon-button sidenav-toggle-button"
                 [hidden]="!sidenav.opened">
@@ -48,7 +48,7 @@
             <mat-icon aria-label="Menu" class="material-icons">menu</mat-icon>
         </button>
         <h1 class="component-title">
-            <a mat-button class="title-link text-uppercase font-weight-bold" [routerLink]="['home']"> Find my way<mat-icon mat-list-icon>location_on</mat-icon></a>
+            <a mat-button class="title-link text-uppercase font-weight-bold" [routerLink]="['']"> Find my way<mat-icon mat-list-icon>location_on</mat-icon></a>
         </h1>
         <span class="toolbar-filler"></span>
         <!--<button id="button-login" mat-button [routerLink]="['/signupin']" *ngIf="!(user | async)">Log In</button>
