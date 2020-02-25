@@ -72,7 +72,7 @@ export class CommerceComponent implements OnInit, AfterViewInit {
 
     this.map.addLayer(this.lgMarkers);
 
-   
+
   }
 
 

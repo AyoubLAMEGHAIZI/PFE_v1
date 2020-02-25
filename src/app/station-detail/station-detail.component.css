@@ -45,3 +45,16 @@
     -o-transition: all 1s ease;
     transition: all 1s ease;
 }
+
+.map-container {
+  margin: 30px;
+}
+
+.map-frame {
+  border: 2px solid black;
+  height: 100%;
+}
+
+#map {
+  height: 350px;
+}
