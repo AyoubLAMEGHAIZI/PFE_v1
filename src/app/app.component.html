@@ -24,6 +24,11 @@
                 <mat-icon mat-list-icon>location_on</mat-icon>
                 <span class="title" mat-line>Ma position</span>
             </a>
+            <a mat-list-item class="sidenav-link" [routerLink]="['Sanissette']" (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>wc</mat-icon>
+                <span class="title" mat-line>Sanissettes</span>
+            </a>
+
             <a mat-list-item class="sidenav-link" [routerLink]="['autres-sites']" (click)="sidenav.toggle()">
                 <mat-icon mat-list-icon>language</mat-icon>
                 <span class="title" mat-line>Sites utiles</span>
@@ -36,6 +41,7 @@
                 <mat-icon mat-list-icon>sentiment_very_satisfied</mat-icon>
                 <span class="title" mat-line>About us</span>
             </a>
+           
 
 
 

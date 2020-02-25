@@ -133,13 +133,7 @@ export class MypositionComponent implements OnInit {
   }
 
 
-  /* --- ANCIEN METHODE NE FONCTIONNE PAS
-    showLocation2(pos) {
-      this.longitude = +pos.coords.longitude;
-      this.latitude = +pos.coords.latitude;
-      alert('Latitude : ' + this.latitude + ' Longitude: ' + this.longitude);
-    }
-  */
+  
 
 
 }

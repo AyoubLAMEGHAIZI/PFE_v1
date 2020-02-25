@@ -10,7 +10,7 @@ import { StationDetailComponent } from './station-detail/station-detail.componen
 import { FormsModule } from '@angular/forms';
 import { CommerceComponent } from './commerce/commerce.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// tslint:disable-next-line:max-line-length
+
 import { MatButtonModule, MatNativeDateModule, MatIconModule, MatSidenavModule, MatListModule, MatToolbarModule, MatSliderModule, MatSelectModule, MatInputModule, MatAutocompleteModule, MatCardModule } from '@angular/material';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { MypositionComponent } from './myposition/myposition.component';
@@ -20,6 +20,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { FooterComponent } from './footer/footer.component';
 import { ButtonsModule, IconsModule } from 'angular-bootstrap-md';
 import { HomepageComponent } from './homepage/homepage.component';
+import { SanissetteComponent } from './sanissette/sanissette.component';
 const appRoutes: Routes = [
   {
     path: 'station-details',
@@ -55,6 +56,11 @@ const appRoutes: Routes = [
     path: 'home',
     component: HomepageComponent,
     data: { title: 'Home page' }
+  },
+  {
+    path: 'Sanissette',
+    component: SanissetteComponent,
+    data: { title: 'Others' }
   }
 
 
@@ -70,7 +76,8 @@ const appRoutes: Routes = [
     ContactComponent,
     AboutusComponent,
     FooterComponent,
-    HomepageComponent
+    HomepageComponent,
+    SanissetteComponent
   ],
   imports: [
     BrowserModule,

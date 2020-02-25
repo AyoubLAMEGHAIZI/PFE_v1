@@ -1,6 +1,6 @@
+import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import { map, mergeMap } from 'rxjs/operators';
 import { RestService } from './../rest.service';
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as L from 'leaflet';
 
@@ -13,21 +13,20 @@ const stationIcon = L.icon({
 
 });
 
-
 @Component({
-  selector: 'app-commerce',
-  templateUrl: './commerce.component.html',
-  styleUrls: ['./commerce.component.css'],
+  selector: 'app-sanissette',
+  templateUrl: './sanissette.component.html',
+  styleUrls: ['./sanissette.component.css']
 })
 
-export class CommerceComponent implements OnInit, AfterViewInit {
+export class SanissetteComponent implements OnInit,AfterViewInit {
 
   constructor(public rest: RestService, private route: ActivatedRoute, private router: Router) { }
 
   @Input() stationD = { name: '', distance: ''};
 
   station: any;
-  commerces: any ;
+  sanissettes: any ;
   latitude: number;
   longuitude: number;
   carte: any;
@@ -45,13 +44,13 @@ export class CommerceComponent implements OnInit, AfterViewInit {
    // ---
 
  lgMarkers = new L.LayerGroup();
+
    getSliderTickInterval(): number | 'auto' {
     return this.showTicks ? (this.autoTicks ? 'auto' : this.tickInterval) : 0;
   }
 
-
-
-  ngOnInit() {  }
+  ngOnInit() {
+  }
 
   ngAfterViewInit(): void {
     this.initMap(48.8534, 2.3488);
@@ -67,19 +66,15 @@ export class CommerceComponent implements OnInit, AfterViewInit {
       maxZoom: 19,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
-
     tiles.addTo(this.map);
 
     this.map.addLayer(this.lgMarkers);
-
-   
   }
 
 
-  getCommercesFromStat() {
-
+  getSanissettesFromStat() {
+    
     this.lgMarkers.clearLayers();
-
     this.rest.getStation(this.stationD.name.toUpperCase()).pipe(
       map( data => {
         this.station = data;
@@ -90,13 +85,13 @@ export class CommerceComponent implements OnInit, AfterViewInit {
         this.map.setView([this.latitude, this.longuitude], 15);
         return this.station;
       }),
-      mergeMap( station => this.rest.getCommerce(this.latitude, this.longuitude, this.stationD.distance))
-    ).subscribe( comm => {
-      this.commerces = comm;
-      this.commerces.records.map(r => r.fields).
+      mergeMap( station => this.rest.getSanissette(this.latitude, this.longuitude,this.stationD.distance))
+    ).subscribe(sanissette=> {
+      this.sanissettes = sanissette;
+      this.sanissettes.records.map(r => r.fields).
       forEach(element => {
-        L.marker([element.coord_geo[0], element.coord_geo[1]]).addTo(this.lgMarkers)
-        .bindPopup(element.tco_libelle + ', ' + element.dea_numero_rue_livraison_dea_rue_livraison);
+        L.marker([element.geo_point_2d[0], element.geo_point_2d[1]]).addTo(this.lgMarkers)
+        .bindPopup(element.horaire + ', ' + element.adresse);
       });
     });
 
