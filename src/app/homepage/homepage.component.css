@@ -9,7 +9,7 @@
 .w3-border-grey,.w3-hover-border-grey:hover,.w3-border-gray,.w3-hover-border-gray:hover{border-color:#9e9e9e!important}
 .w3-center{text-align:center}
 
-/************** Ce qui precede cette ligne n'est pas à moi **********************/
+
 body {
 	margin: 0 !important;
 	padding: 0 !important;
@@ -29,8 +29,8 @@ body {
   .background {
 	/*height: 1080px;
 	width: 1920px;*/
-	background: url(https://docs.google.com/uc?export=download&id=0B2PO2Lr7Bv2QSXhkaG1VaEhSTjA);
-	/*background-image: url("../../assets/img/home.jpg");*/
+	/*background: url(https://docs.google.com/uc?export=download&id=0B2PO2Lr7Bv2QSXhkaG1VaEhSTjA);*/
+	background-image: url("../../assets/img/home.jpg");
 	background-repeat: repeat-x;
 	background-position: top center;
 	background-size: 100%;

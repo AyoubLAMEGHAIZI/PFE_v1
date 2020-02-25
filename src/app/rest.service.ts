@@ -11,6 +11,8 @@ export class RestService {
 
     endpoint = 'https://dataratp2.opendatasoft.com/api/records/1.0/search/';
     endpoint2 = 'https://dataratp.opendatasoft.com/api/records/1.0/search/';
+    endpoint3 = 'https://opendata.paris.fr/api/records/1.0/search/';
+
     httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -31,22 +33,35 @@ export class RestService {
   }
 
   getStation(stationNom): Observable<any> {
-    // tslint:disable-next-line:max-line-length
+   
     return this.http.get(this.endpoint + '?dataset=positions-geographiques-des-stations-du-reseau-ratp&rows=1&refine.stop_name=' + stationNom).pipe(
       map(this.extractData));
 
   }
 
-  getCommerces(): Observable<any> {
-    // tslint:disable-next-line:max-line-length
-    return this.http.get(this.endpoint2 + '?dataset=liste-des-commerces-de-proximite-agrees-ratp').pipe(
+  getSanissettes(): Observable<any> {
+    
+    return this.http.get(this.endpoint3 + '?dataset=sanisettesparis').pipe(
       map(this.extractData));
 
   }
 
+  getCommerces(): Observable<any> {
+
+    return this.http.get(this.endpoint2 + '?dataset=liste-des-commerces-de-proximite-agrees-ratp').pipe(
+      map(this.extractData));
+
+  }
   getCommerce(latitude, long, dist): Observable<any> {
     // tslint:disable-next-line:max-line-length
     return this.http.get(this.endpoint2 + '?dataset=liste-des-commerces-de-proximite-agrees-ratp&rows=200&sort=code_postal&geofilter.distance=' + latitude + '%2C+' + long + '%2C+' + dist).pipe(
+      map(this.extractData));
+
+  }
+
+  getSanissette(latitude, long, dist): Observable<any> {
+    
+    return this.http.get(this.endpoint3 + '?dataset=sanisettesparis&rows=200&geofilter.distance=' + latitude + '%2C+' + long + '%2C+' + dist).pipe(
       map(this.extractData));
 
   }
