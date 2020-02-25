@@ -20,24 +20,12 @@
     </div>
   </div>
 
-  <div *ngIf="station" class="stations container materialCard">
     
-    <mat-card class="example-card">
-      <mat-card-header>
-        <mat-icon matSuffix>train</mat-icon>
-        <mat-card-title>
-          <h2>Station {{station.records[0].fields.stop_name | uppercase}}</h2>
-        </mat-card-title>
-        <mat-card-subtitle><span>Coordinates: </span>{{station.records[0].fields.stop_coordinates}}</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image src="../../assets/img/home.jpg" alt="Photo of a Shiba Inu">
-      <mat-card-content>
-        <p>
-          <span>Adresse: </span>{{station.records[0].fields.stop_desc}}
-        </p>
-      </mat-card-content>
-    </mat-card>
-    
-  </div>
+    <div class="map-container">
+      <div class="map-frame">
+        <div id="map"></div>
+      </div>
+    </div>
+
   <br><br><br><br><br><br>
 </div>
