@@ -54,6 +54,7 @@ const appRoutes: Routes = [
   },
   {
     path: '',
+  
     component: HomepageComponent,
     data: { title: 'Home page' }
   },
